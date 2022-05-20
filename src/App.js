@@ -55,13 +55,15 @@ function App() {
   //Use Effect
   useEffect(()=> {
     // getLocalTodos()
-    filterHandler()
+    
     saveLocalTodos()
-  }, [todos, status,  filterHandler, saveLocalTodos])
+  }, [todos, status,   saveLocalTodos])
   //Functions
  
 
-  
+  useEffect(() => {
+    filterHandler()
+  }, [filterHandler])
 
   
   return (
