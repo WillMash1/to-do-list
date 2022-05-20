@@ -20,9 +20,10 @@ function App() {
   const [filteredTodos, setFilterTodos] = useState([])
   //Use Effect
   useEffect(()=> {
+    // getLocalTodos()
     filterHandler()
     saveLocalTodos()
-  }, [todos, status])
+  }, [todos, status, saveLocalTodos])
   //Functions
   const filterHandler = () => {
     switch(status) {
