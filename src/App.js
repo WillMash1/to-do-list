@@ -36,7 +36,7 @@ function App() {
    
     localStorage.setItem('todos', JSON.stringify(todos))
   
-  })
+  }, [todos])
 
 
   
@@ -53,21 +53,21 @@ function App() {
         setFilterTodos(todos)
         break;
     }
-  })
+  }, [todos,status ])
 
 
   //Use Effect
   useEffect(()=> {
     // getLocalTodos()
-    
+    filterHandler()
     saveLocalTodos()
-  }, [todos, status,   saveLocalTodos])
+  }, [todos, status,   saveLocalTodos, filterHandler])
   //Functions
  
 
-  useEffect(() => {
-    filterHandler()
-  }, [filterHandler])
+  // useEffect(() => {
+    
+  // }, [filterHandler])
 
   
   return (
