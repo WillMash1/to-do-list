@@ -8,6 +8,17 @@ import TodoList from "./components/TodoList"
 
 
 function App() {
+
+  const getLocalTodos = () => {
+    if(localStorage.getItem('todos') === null) {
+      localStorage.setItem('todos', JSON.stringify([]))
+    } else {
+     let todoLocal =  JSON.parse(localStorage.getItem('todos'))
+     setTodos(todoLocal)
+    }
+  }
+
+  
   //Run once when the app starts
   useEffect(() => {
     getLocalTodos()
@@ -26,14 +37,6 @@ function App() {
   
   }
 
-
-  //Use Effect
-  useEffect(()=> {
-    // getLocalTodos()
-    filterHandler()
-    saveLocalTodos()
-  }, [todos, status, saveLocalTodos, filterHandler])
-  //Functions
   const filterHandler = () => {
     switch(status) {
       case 'completed':
@@ -49,17 +52,18 @@ function App() {
     }
   }
 
+  //Use Effect
+  useEffect(()=> {
+    // getLocalTodos()
+    filterHandler()
+    saveLocalTodos()
+  }, [todos, status,  filterHandler])
+  //Functions
+ 
 
   
 
-  const getLocalTodos = () => {
-    if(localStorage.getItem('todos') === null) {
-      localStorage.setItem('todos', JSON.stringify([]))
-    } else {
-     let todoLocal =  JSON.parse(localStorage.getItem('todos'))
-     setTodos(todoLocal)
-    }
-  }
+  
   return (
     <div className="App">
       <header>
