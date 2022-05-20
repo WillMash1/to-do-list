@@ -18,7 +18,7 @@ function App() {
     }
   }
 
-  
+
   //Run once when the app starts
   useEffect(() => {
     getLocalTodos()
@@ -57,7 +57,7 @@ function App() {
     // getLocalTodos()
     filterHandler()
     saveLocalTodos()
-  }, [todos, status,  filterHandler])
+  }, [todos, status,  filterHandler, saveLocalTodos])
   //Functions
  
 
