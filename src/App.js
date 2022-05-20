@@ -1,5 +1,5 @@
 
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useCallback} from 'react'
 
 import "./App.css"
 
@@ -31,13 +31,16 @@ function App() {
   const [filteredTodos, setFilterTodos] = useState([])
 
   //save to local
-  const saveLocalTodos = () => {
+
+  const saveLocalTodos =  useCallback(() => {
    
     localStorage.setItem('todos', JSON.stringify(todos))
   
-  }
+  })
 
-  const filterHandler = () => {
+
+  
+  const filterHandler = useCallback(() => {
     switch(status) {
       case 'completed':
         setFilterTodos(todos.filter(todo => todo.completed === true))
@@ -50,7 +53,8 @@ function App() {
         setFilterTodos(todos)
         break;
     }
-  }
+  })
+
 
   //Use Effect
   useEffect(()=> {
